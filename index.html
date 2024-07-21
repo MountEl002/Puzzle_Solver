@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word-Finder</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Word Finder</h1>
+      <form id="criteria-form">
+        <label for="text-chunk">Paste the chuck of text here: </label><br />
+        <textarea
+          name="text-chunk"
+          id="text-chunk"
+          rows="10"
+          cols="44"
+          required
+        ></textarea
+        ><br />
+        <label for="number-of-letters"
+          >Enter the number of letter in the word:</label
+        ><br />
+        <input
+          type="number"
+          name="number-of-letters"
+          id="number-of-letters"
+          min="1"
+          max="50"
+          required
+        /><br />
+        <label for="letters-in-word"
+          >Key in the letters in the word (Optional):</label
+        ><br />
+        <input
+          type="text"
+          name="letters-in-word"
+          id="letters-in-word"
+          placeholder="e.g., a,b,c,d,e"
+        /><br />
+        <label for="letters-not-in-word"
+          >Key in the letters not in the word (Optional):</label
+        ><br />
+        <input
+          type="text"
+          name="letters-not-in-word"
+          id="letters-not-in-word"
+          placeholder="e.g., v,w,x,y"
+        /><br />
+        <label for="indices-of-letters"
+          >Key in the indeces of the letters in the word:</label
+        ><br />
+        <input
+          type="text"
+          name="indices-of-letters"
+          id="indices-of-letters"
+          placeholder="e.g., 0:a,2:c,"
+        /><br />
+        <input type="submit" value="submit" id="analyze-text" />
+      </form>
+      <div id="results" class="results">
+        <h4>These are the words matching your criteria:</h4>
+        <p id="words" class="words"></p>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
