@@ -1,7 +1,7 @@
 document.getElementById("criteria-form").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const text = document.getElementById("text-chunk").value;
+  const text = document.getElementById("text-chunk").value.toLowerCase();
   const numberOfLetters = parseInt(
     document.getElementById("number-of-letters").value,
     10
@@ -10,39 +10,23 @@ document.getElementById("criteria-form").addEventListener("submit", (e) => {
     .getElementById("letters-in-word")
     .value.trim()
     .split(",")
-    .map((letter) => {
-      return letter.trim().toLowerCase();
-    })
-    .filter((letter) => {
-      return letter !== "";
-    });
+    .map((letter) => letter.trim().toLowerCase())
+    .filter((letter) => letter !== "");
   const lettersNotInWord = document
     .getElementById("letters-not-in-word")
     .value.trim()
     .split(",")
-    .map((letter) => {
-      return letter.trim().toLowerCase();
-    })
-    .filter((letter) => {
-      return letter !== "";
-    });
+    .map((letter) => letter.trim().toLowerCase())
+    .filter((letter) => letter !== "");
   const indicesOfLetters = document
     .getElementById("indices-of-letters")
     .value.trim()
     .split(",")
-    .map((i) => {
-      return i.trim();
-    })
-    .filter((i) => {
-      return i !== "";
-    });
+    .map((i) => i.trim())
+    .filter((i) => i !== "");
 
   const regex = /\b\w+\b/g;
-  const words =
-    text.match(regex) ||
-    [].map((word) => {
-      return word.toLowerCase();
-    });
+  const words = text.match(regex) || [];
   const uniqueWords = [...new Set(words)];
 
   const meetsFirstCriteria = uniqueWords.filter((word) => {
@@ -66,23 +50,26 @@ document.getElementById("criteria-form").addEventListener("submit", (e) => {
       return word;
     }
   });
-  console.log(words);
-  console.log(meetsFirstCriteria);
-  console.log(lettersInWord);
-  console.log(lettersNotInWord);
-  console.log(indicesOfLetters);
-  console.log(meetsSecondCriteria);
-  console.log(meetsThirdCriteria);
-  // document.getElementById("results").style.display = "flex";
-  // document.getElementById("words").textContent = meetsThirdCriteria;
+
+  const meetsFourthCriteria = meetsThirdCriteria.filter((word) => {
+    const matchAllIndices = indicesOfLetters.every((combination) => {
+      const [letterIndex, letter] = combination
+        .split(":")
+        .map((index) => index.trim());
+      return word[parseInt(letterIndex, 10)] === letter.toLowerCase();
+    });
+    if (matchAllIndices) return word;
+  });
+  document.getElementById("results").style.display = "block";
+  if (meetsFourthCriteria.length === 0) {
+    document.getElementById("results-intro").textContent =
+      "No words in the given text matches your criteria";
+    document.getElementById("words").textContent = "";
+  } else {
+    document.getElementById("results-intro").textContent =
+      "These are the words matching your criteria: ";
+    document.getElementById("words").textContent = `${meetsFourthCriteria.join(
+      ", "
+    )}`;
+  }
 });
-
-// console.loog(numberOfLetters);
-// console.log(lettersInWord);
-// console.log(lettersNotInWord);
-// console.log(indicesOfLetters);
-
-// const firstWord = "come";
-// const letters = ["c", "m", "o", "e"];
-// const allFound = letters.every((letter) => firstWord.includes(letter));
-// console.log(allFound);
