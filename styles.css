@@ -90,6 +90,7 @@ textarea {
   margin-top: 5px;
   background-color: lightgreen;
   border: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 textarea {
@@ -102,7 +103,7 @@ textarea {
 input {
   height: 25px;
   width: 96%;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 7.5px;
 }
 
@@ -121,4 +122,27 @@ textarea:focus {
 
 #analyze-text:hover {
   background-color: rgb(86, 180, 86);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+button {
+  text-align: center;
+  background-color: rgb(202, 188, 188);
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 20px;
+  padding: 7.5px;
+  width: 100%;
+  border: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button:hover {
+  background-color: rgb(176, 141, 223);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
