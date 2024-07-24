@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Puzzle Solver</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="site-overlay" class="site-overlay">
+      <p>Loading...</p>
+    </div>
+    <!-- <div class="loading-words">
+      <p>Loading...</p>
+      <div class="circle"></div>
+    </div> -->
+    <div class="app">
+      <h1>Welcome to Word Puzzle Solver</h1>
+      <h3>Find a Solution to All Word Puzzles in Seconds</h3>
+      <div class="container">
+        <div class="form-container">
+          <form id="criteria-form">
+            <label for="max-number-of-letters"
+              >Enter the maximum number of letter for any word in the
+              puzzle:</label
+            ><br />
+            <input
+              type="number"
+              name="max-number-of-letters"
+              id="max-number-of-letters"
+              min="1"
+              max="50"
+              required
+            /><br />
+            <label for="min-number-of-letters"
+              >Enter the minimum number of letter for any word in the
+              puzzle:</label
+            ><br />
+            <input
+              type="number"
+              name="min-number-of-letters"
+              id="min-number-of-letters"
+              min="1"
+              max="50"
+              required
+            /><br />
+            <label for="letters-in-word"
+              >Enter the letters provided in the puzzle and the number of times
+              they appear:</label
+            ><br />
+            <input
+              type="text"
+              name="letters-in-word"
+              id="letters-in-word"
+              placeholder="e.g., a:2,g:1,h:1,n:3,d:1"
+              required
+            /><br />
+            <!-- <label for="letters-not-in-word"
+              >Key in the letters not in the word (Optional):</label
+            ><br />
+            <input
+              type="text"
+              name="letters-not-in-word"
+              id="letters-not-in-word"
+              placeholder="e.g., v,w,x,y"
+            /><br /> -->
+            <label for="indices-of-letters"
+              >Key in the indeces of the letters in the word (Optional):</label
+            ><br />
+            <input
+              type="text"
+              name="indices-of-letters"
+              id="indices-of-letters"
+              placeholder="e.g., 0:a,2:c,"
+            /><br />
+            <input type="submit" value="Sovle The Puzzle" id="analyze-text" />
+          </form>
+        </div>
+        <div id="results" class="results">
+          <h4 id="results-intro">
+            These are the words matching your criteria:
+          </h4>
+          <p id="words" class="words"></p>
+        </div>
+      </div>
+    </div>
+    <script src="app_2.js"></script>
+  </body>
+</html>
