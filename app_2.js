@@ -18,7 +18,10 @@ document.getElementById("criteria-form").addEventListener("submit", (e) => {
     10
   );
 
-  const lettersInWord = document.getElementById("letters-in-word").value.trim();
+  const lettersInWord = document
+    .getElementById("letters-in-word")
+    .value.trim()
+    .toLowerCase();
   const lettersInWordArray = lettersInWord.split(",");
   // lettersOnly = extractLetters(lettersInWord, lettersOnly);
 
