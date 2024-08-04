@@ -62,12 +62,12 @@ document.getElementById("criteria-form").addEventListener("submit", (e) => {
   });
   document.getElementById("results").style.display = "block";
   if (meetsFourthCriteria.length === 0) {
-    document.getElementById("results-intro").textContent =
-      "No words in the given text matches your criteria";
+    document.getElementById("results-intro").innerHTML =
+      "<h3>No words in the given text matches your criteria</h3>";
     document.getElementById("words").textContent = "";
   } else {
-    document.getElementById("results-intro").textContent =
-      "These are the words matching your criteria: ";
+    document.getElementById("results-intro").innerHTML =
+      "<h3>These are the words matching your criteria: </h3>";
     document.getElementById("words").textContent = `${meetsFourthCriteria.join(
       ", "
     )}`;

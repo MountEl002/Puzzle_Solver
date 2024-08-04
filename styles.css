@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   background-color: blueviolet;
@@ -17,10 +21,9 @@ body {
 }
 
 .site-overlay p {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
   font-size: 70px;
   color: dimgray;
@@ -46,37 +49,42 @@ body {
 } */
 
 .app {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
+  /* height: 100vh; */
 }
 
-.container {
+.app .container {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: min(600px, 90%);
+  gap: 20px;
   padding: 20px;
   border: solid 3px black;
   border-radius: 15px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: rgb(156, 156, 161);
 }
 
-.form-container {
-  margin-right: 5%;
+.container .form-container,
+.container .results {
+  width: 100%;
   border: 2px solid grey;
   border-radius: 15px;
   padding: 10px;
   background-color: rgb(141, 141, 172);
 }
 
-.results {
-  position: relative;
-  display: none;
-  border: 2px solid white;
-  background-color: rgb(141, 141, 172);
-  border-radius: 15px;
-  padding: 10px;
+.container .results {
+  display: none; /* border-radius: 15px; */
+}
+
+.container .form-container + .container .results {
+  width: inherit;
 }
 
 h1,
@@ -86,6 +94,7 @@ h3 {
 
 input,
 textarea {
+  width: 100%;
   margin-bottom: 20px;
   margin-top: 5px;
   background-color: lightgreen;
@@ -97,7 +106,7 @@ textarea {
   border-radius: 15px;
   padding: 15px;
   overflow: auto;
-  resize: none;
+  resize: both;
 }
 
 input {
@@ -118,6 +127,7 @@ textarea:focus {
   font-size: 18px;
   height: 100%;
   width: 100%;
+  transition: all 0.3s linear;
 }
 
 #analyze-text:hover {
@@ -135,6 +145,7 @@ button {
   width: 100%;
   border: none;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s linear;
 }
 
 a {
